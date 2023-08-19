@@ -1,0 +1,25 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "Delete Book";
+}
+<div class="container shadow p-5">
+    <div class="row">
+        <h2>Delete Book</h2>
+    </div>
+
+    <form method="post" asp-action="DeleteBook" asp-route-bookId="@Model.Id">
+        <input asp-for="Id" hidden />
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Book Id : @Model.Id</h5>
+                <p class="card-text">Book Title : @Model.Title</p>
+                <p class="card-text">ISBN : @Model.ISBN</p>
+                <p class="card-text">Book Author : @Model.Author</p>
+                <p class="card-text">Category Id : @Model.CategoryId</p>
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a asp-controller="Books" asp-action="Index" class="btn btn-primary">Back To List</a>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,22 @@
+﻿@model CategoryType
+@{
+    ViewData["Title"] = "Delete Category Type";
+}
+<div class="container shadow p-5">
+    <div class="row">
+        <h2>Delete Category Type</h2>
+    </div>
+
+    <form method="post" asp-action="DeleteCategoryType" asp-route-categoryTypeId="@Model.Type">
+        <input asp-for="Type" hidden />
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Category Type : @Model.Type</h5>
+                <p class="card-text">Category Type Name: @Model.Name</p>
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a asp-controller="CategoryTypes" asp-action="Index" class="btn btn-primary">Back To List</a>
+            </div>
+        </div>
+    </form>
+</div>

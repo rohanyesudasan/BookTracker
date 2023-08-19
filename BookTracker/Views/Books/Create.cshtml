@@ -1,0 +1,28 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "Create Book";
+}
+
+<div class="container shadow p-5">
+    <div class="row">
+        <h1>Add Book</h1>
+    </div>
+    <form method="post">
+        @*<div asp-validation-summary="All" class="alert-danger"></div> *@      
+        <div class="form mb-3">            
+            <label>Book Title</label>
+            <input type="text" class="form-control" asp-for="Title" placeholder="Enter book title" />
+            <span asp-validation-for="Title" class="alert-danger"></span>
+            <label>ISBN</label>
+            <input type="text" class="form-control" asp-for="ISBN" placeholder="Enter ISBN" />
+            <span asp-validation-for="ISBN" class="alert-danger"></span>
+            <label>Author</label>
+            <input type="text" class="form-control" asp-for="Author" placeholder="Enter Author" />
+            <span asp-validation-for="Author" class="alert-danger"></span>
+            <label>Select Category</label>
+            <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories,"Id","NameToken"))"></select>
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-controller="Books" asp-action="Index" class="btn btn-primary">Back</a>
+    </form>
+</div>

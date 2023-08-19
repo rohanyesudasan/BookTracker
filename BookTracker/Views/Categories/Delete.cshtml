@@ -1,0 +1,24 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Delete Category";
+}
+<div class="container shadow p-5">
+    <div class="row">
+        <h2>Delete Category</h2>
+    </div>
+
+    <form method="post" asp-action="DeleteCategory" asp-route-categoryId="@Model.Id">
+        <input asp-for="Id" hidden />
+
+        <div class="card" style="width: 18rem;">            
+            <div class="card-body">
+                <h5 class="card-title">Category Id : @Model.Id</h5>
+                <p class="card-text">Category Name : @Model.NameToken</p>
+                <p class="card-text">Category Description : @Model.Description</p>
+                <p class="card-text">Category Type Id : @Model.TypeId</p>
+                 <button type="submit" class="btn btn-danger">Delete</button>
+                 <a asp-controller="Categories" asp-action="Index" class="btn btn-primary">Back To List</a>
+            </div>
+        </div>
+    </form>
+</div>

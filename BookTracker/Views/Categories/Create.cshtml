@@ -1,0 +1,25 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Create Category";
+}
+
+<div class="container shadow p-5">
+    <div class="row">
+        <h1>Add Category</h1>
+    </div>
+    <form method="post">
+        @*<div asp-validation-summary="All" class="alert-danger"></div> *@      
+        <div class="form mb-3">            
+            <label for="NameToken">Category Name</label>
+            <input type="text" class="form-control" id="NameToken" asp-for="NameToken" placeholder="Enter category name" />
+            <span asp-validation-for="NameToken" class="alert-danger"></span>
+            <label for="Description">Category Description</label>
+            <input type="text" class="form-control" id="Description" asp-for="Description" placeholder="Enter category description" />
+            <span asp-validation-for="Description" class="alert-danger"></span>
+            <label for="TypeId">Select Category Type</label>
+            <select asp-for="TypeId" id="TypeId" class="form-control" asp-items="@(new SelectList(ViewBag.CategoryTypes,"Type","Name"))"></select>
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-controller="Categories" asp-action="Index" class="btn btn-primary">Back</a>
+    </form>
+</div>

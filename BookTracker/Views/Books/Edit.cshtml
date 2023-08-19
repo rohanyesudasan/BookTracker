@@ -1,0 +1,40 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "Edit Book";
+}
+<div class="container shadow p-5">
+    <div class="row">
+        <h2>Edit Book</h2>
+    </div>
+
+    <form method="post" asp-action="Edit">
+        <div class="form-row">
+             <div class="form-floating mb-3">
+                <input type="text" class="form-control" asp-for="Id" placeholder="Enter book ID" readonly="readonly"/>
+                <label asp-for="Id">Book Id</label>               
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" asp-for="Title" placeholder="Enter book title" />
+                <label asp-for="Title">Category Name</label>
+                <span asp-validation-for="Title" class="alert-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" asp-for="ISBN" placeholder="Enter ISBN" />
+                <label asp-for="ISBN">ISBN</label>
+                <span asp-validation-for="ISBN" class="alert-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" asp-for="Author" placeholder="Enter book author" />
+                <label asp-for="Author">Author</label>
+                <span asp-validation-for="Author" class="alert-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories,"Id","NameToken",Model.CategoryId))"></select>
+                <label asp-for="CategoryId">Select Category</label>
+                <span asp-validation-for="CategoryId" class="alert-danger"></span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Update</button>
+        <a asp-controller="Books" asp-action="Index" class="btn btn-primary">Back</a>
+    </form>
+</div>

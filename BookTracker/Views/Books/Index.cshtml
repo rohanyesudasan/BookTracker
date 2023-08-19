@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Book>
+@{
+    ViewData["Title"] = "Book List";
+}
+
+
+<div class="container shadow p-5">
+    @if (TempData["SuccessMsg"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMsg"]
+        </div>
+    }
+    <h1 class="text-center">Book List</h1>
+    <div class="col mb-3">
+        <a asp-controller="Books" asp-action="Create" class="btn btn-primary">Add Book</a>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">Book Id</th>
+                <th scope="col">Book Title</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">Author</th>
+                <th scope="col">Category</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td width="10%">
+                        @item.Id
+                    </td>
+                    <td width="30%">
+                        @item.Title
+                    </td>
+                    <td width="10%">
+                        @item.ISBN
+                    </td>
+                    <td width="15%">
+                        @item.Author
+                    </td>
+                    <td width="15%">
+                        @item.Category.NameToken
+                    </td>
+                    <td width="20%">
+                        <a asp-controller="Books" asp-action="Edit" asp-route-bookId="@item.Id" class=" btn btn-primary">Edit</a>&nbsp;
+                        <a asp-controller="Books" asp-action="Delete" asp-route-bookId="@item.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

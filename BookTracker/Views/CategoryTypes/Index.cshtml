@@ -1,0 +1,44 @@
+﻿@model IEnumerable<CategoryType>
+@{
+    ViewBag.Title = "Category Type List";
+}
+
+
+<div class="container shadow p-5">
+    @if (TempData["SuccessMsg"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMsg"]
+        </div>
+    }
+    <h1 class="text-center">Category Type List</h1>
+    <div class="col mb-3">
+        <a asp-controller="CategoryTypes" asp-action="Create" class="btn btn-primary">Add Category Type</a>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">Category Type</th>
+                <th scope="col">Category Type Name</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td width="30%">
+                        @item.Type
+                    </td>
+                    <td width="40%">
+                        @item.Name
+                    </td>
+                    <td width="30%">
+                        <a asp-controller="CategoryTypes" asp-action="Edit" asp-route-categoryTypeId="@item.Type" class=" btn btn-primary">Edit</a>&nbsp;
+                        <a asp-controller="CategoryTypes" asp-action="Delete" asp-route-categoryTypeId="@item.Type" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
